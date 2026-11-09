@@ -1,0 +1,10 @@
+{
+  "name": "an-orionbound-spirit",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Personal journal website. No dependencies: run npm run build, or node build.mjs.",
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}
