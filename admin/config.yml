@@ -1,0 +1,476 @@
+# Studio settings (Sveltia CMS).
+# If your GitHub username is not "anorionboundspirit", change the "repo" line below
+# to  YOUR-USERNAME/YOUR-REPOSITORY-NAME  and change the two web addresses further down.
+
+backend:
+  name: github
+  repo: anorionboundspirit/anorionboundspirit.github.io
+  branch: main
+  auth_methods:
+    - token
+
+site_url: https://anorionboundspirit.github.io
+display_url: https://anorionboundspirit.github.io
+
+logo:
+  src: /images/logo.jpg
+  show_in_header: true
+
+# Photos you upload are shrunk and saved as WebP so the site stays fast on mobile data.
+media_folder: images/uploads
+public_folder: /images/uploads
+media_libraries:
+  all:
+    transformations:
+      raster_image:
+        format: webp
+        quality: 85
+        width: 1800
+        height: 1800
+
+collections:
+  - name: posts
+    label: Posts
+    label_singular: Post
+    folder: content/posts
+    create: true
+    extension: json
+    format: json
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}}"
+    sortable_fields:
+      - date
+      - title
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Post date
+        name: date
+        widget: datetime
+        default: "{{now}}"
+      - label: What kind of post is it?
+        name: tags
+        widget: select
+        multiple: true
+        hint: Pick one or more. Readers can filter by these.
+        options:
+          - Thought
+          - Photo
+          - Moment
+          - Dream Story
+        default:
+          - Thought
+      - label: Photo
+        name: photo
+        widget: image
+        required: false
+        hint: Big photos are shrunk automatically.
+      - label: Describe the photo in a few words
+        name: photoAlt
+        widget: string
+        required: false
+        hint: For readers who cannot see the photo.
+      - label: Which part of the photo should stay in view?
+        name: photoFocus
+        widget: select
+        required: false
+        default: "50% 50%"
+        hint: Cards crop wide photos. This keeps the important part visible.
+        options:
+          - label: Centre
+            value: "50% 50%"
+          - label: Left
+            value: "30% 50%"
+          - label: Right
+            value: "70% 50%"
+          - label: Top
+            value: "50% 25%"
+          - label: Bottom
+            value: "50% 75%"
+      - label: Caption (shown over the photo)
+        name: caption
+        widget: string
+        required: false
+      - label: Your words
+        name: body
+        widget: markdown
+      - label: Question for your readers
+        name: question
+        widget: string
+        required: false
+        hint: A clear question at the end brings far more replies.
+      - label: Allow comments on this post
+        name: comments
+        widget: boolean
+        default: true
+      - label: Keep as a draft (hidden from the site)
+        name: draft
+        widget: boolean
+        default: false
+
+  - name: settings
+    label: Site settings
+    files:
+      - name: site
+        label: Site text, look and menu
+        file: content/site.json
+        format: json
+        fields:
+          - label: Site name
+            name: title
+            widget: string
+          - label: Short name under the home-screen icon
+            name: shortName
+            widget: string
+          - label: Short description (shown on Google and when your link is shared)
+            name: description
+            widget: text
+          - label: Site address (used for share previews)
+            name: siteUrl
+            widget: string
+            required: false
+            hint: "Example: https://anorionboundspirit.github.io"
+          - label: Logo
+            name: logo
+            widget: image
+            required: false
+          - label: Picture shown when your link is shared
+            name: shareImage
+            widget: image
+            required: false
+          - label: Home-screen icon
+            name: appIcon
+            widget: image
+            required: false
+            hint: A square PNG, at least 512 by 512. Leave as it is to keep the current one.
+          - label: Look
+            name: look
+            widget: object
+            fields:
+              - label: Heading font
+                name: headingFont
+                widget: select
+                options:
+                  - Jost
+                  - Cormorant Garamond
+                  - Lora
+                  - Spectral
+              - label: Accent colour
+                name: accent
+                widget: select
+                options:
+                  - label: Gold
+                    value: "#F2C879"
+                  - label: Sky blue
+                    value: "#8FB4FF"
+                  - label: Rose
+                    value: "#F29BB4"
+                  - label: Mint
+                    value: "#8FE3C8"
+              - label: Page colour
+                name: background
+                widget: select
+                options:
+                  - label: Night navy
+                    value: navy
+                  - label: Deep purple (like your logo)
+                    value: purple
+          - label: Menu at the top
+            name: menu
+            widget: list
+            summary: "{{fields.label}}"
+            hint: Drag to reorder. A menu item for a kind of post hides itself until you have a post of that kind.
+            fields:
+              - label: Name shown in the menu
+                name: label
+                widget: string
+              - label: What does it open?
+                name: kind
+                widget: select
+                options:
+                  - label: Posts of one kind
+                    value: tag
+                  - label: A link
+                    value: link
+              - label: Kind of post (if it opens posts of one kind)
+                name: tag
+                widget: select
+                required: false
+                options:
+                  - Thought
+                  - Photo
+                  - Moment
+                  - Dream Story
+              - label: Link address (if it opens a link)
+                name: url
+                widget: string
+                required: false
+                hint: "Use /about/ for your About page, or a full web address."
+              - label: Show it
+                name: enabled
+                widget: boolean
+                default: true
+          - label: Home page sections
+            name: sections
+            widget: list
+            hint: Drag to reorder, switch sections off, or add your own text, photo and quote blocks.
+            types:
+              - label: Intro with your logo
+                name: intro
+                widget: object
+                summary: Intro
+                fields:
+                  - label: Show it
+                    name: enabled
+                    widget: boolean
+                    default: true
+              - label: Featured post
+                name: featured
+                widget: object
+                summary: Featured post
+                fields:
+                  - label: Show it
+                    name: enabled
+                    widget: boolean
+                    default: true
+              - label: Recent entries
+                name: recent
+                widget: object
+                summary: Recent entries
+                fields:
+                  - label: Show it
+                    name: enabled
+                    widget: boolean
+                    default: true
+              - label: Reader question
+                name: reader
+                widget: object
+                summary: Reader question
+                fields:
+                  - label: Show it
+                    name: enabled
+                    widget: boolean
+                    default: true
+              - label: Email signup
+                name: signup
+                widget: object
+                summary: Email signup
+                fields:
+                  - label: Show it
+                    name: enabled
+                    widget: boolean
+                    default: true
+              - label: Text block
+                name: text
+                widget: object
+                summary: "Text: {{fields.heading}}"
+                fields:
+                  - label: Show it
+                    name: enabled
+                    widget: boolean
+                    default: true
+                  - label: Heading
+                    name: heading
+                    widget: string
+                    required: false
+                  - label: Your words
+                    name: body
+                    widget: markdown
+              - label: Photo block
+                name: photo
+                widget: object
+                summary: "Photo: {{fields.caption}}"
+                fields:
+                  - label: Show it
+                    name: enabled
+                    widget: boolean
+                    default: true
+                  - label: Photo
+                    name: image
+                    widget: image
+                  - label: Describe the photo in a few words
+                    name: alt
+                    widget: string
+                    required: false
+                  - label: Caption
+                    name: caption
+                    widget: string
+                    required: false
+              - label: Quote block
+                name: quote
+                widget: object
+                summary: "Quote: {{fields.text}}"
+                fields:
+                  - label: Show it
+                    name: enabled
+                    widget: boolean
+                    default: true
+                  - label: The line that should stand out
+                    name: text
+                    widget: text
+                  - label: Who said it (optional)
+                    name: by
+                    widget: string
+                    required: false
+          - label: Top of the home page
+            name: intro
+            widget: object
+            fields:
+              - label: Small line above the heading
+                name: eyebrow
+                widget: string
+                required: false
+              - label: Big heading
+                name: heading
+                widget: string
+              - label: Paragraph under the heading
+                name: text
+                widget: text
+                required: false
+              - label: First button text
+                name: primaryButton
+                widget: string
+                required: false
+              - label: Second button text
+                name: secondaryButton
+                widget: string
+                required: false
+              - label: Picture on the right
+                name: image
+                widget: image
+                required: false
+          - label: Featured post card
+            name: featured
+            widget: object
+            fields:
+              - label: Link text under the post
+                name: readMore
+                widget: string
+          - label: Recent entries
+            name: recent
+            widget: object
+            fields:
+              - label: Heading
+                name: heading
+                widget: string
+              - label: Link text to all posts
+                name: allPosts
+                widget: string
+          - label: Reader question section
+            name: reader
+            widget: object
+            fields:
+              - label: Heading
+                name: heading
+                widget: string
+              - label: Button text
+                name: button
+                widget: string
+          - label: Email signup
+            name: signup
+            widget: object
+            hint: The box stays hidden until you add a form address.
+            fields:
+              - label: Heading
+                name: heading
+                widget: string
+              - label: Text
+                name: text
+                widget: text
+                required: false
+              - label: Button text
+                name: button
+                widget: string
+              - label: Form address
+                name: formAction
+                widget: string
+                required: false
+                hint: "From your email service, for example Buttondown: https://buttondown.com/api/emails/embed-subscribe/YOUR-USERNAME"
+              - label: Name of the email box in that form
+                name: emailField
+                widget: string
+                required: false
+                default: email
+          - label: Comments
+            name: comments
+            widget: object
+            hint: Comments stay hidden until you fill in ONE of the two options below. If you fill in both, public comments (giscus) are used.
+            fields:
+              - label: "Private messages: form address (for example from Formspree)"
+                name: formAction
+                widget: string
+                required: false
+              - label: "Public comments (giscus): repository"
+                name: giscusRepo
+                widget: string
+                required: false
+                hint: "Example: anorionboundspirit/anorionboundspirit.github.io"
+              - label: "Public comments (giscus): repository ID"
+                name: giscusRepoId
+                widget: string
+                required: false
+              - label: "Public comments (giscus): category name"
+                name: giscusCategory
+                widget: string
+                required: false
+                default: Announcements
+              - label: "Public comments (giscus): category ID"
+                name: giscusCategoryId
+                widget: string
+                required: false
+              - label: Small note under the comment box
+                name: note
+                widget: string
+                required: false
+              - label: Send button text
+                name: button
+                widget: string
+                required: false
+          - label: Social links
+            name: social
+            widget: object
+            fields:
+              - label: Instagram link
+                name: instagram
+                widget: string
+                required: false
+              - label: YouTube link
+                name: youtube
+                widget: string
+                required: false
+              - label: Facebook link
+                name: facebook
+                widget: string
+                required: false
+              - label: Handle shown at the bottom
+                name: handle
+                widget: string
+                required: false
+          - label: Footer
+            name: footer
+            widget: object
+            fields:
+              - label: Name shown at the bottom
+                name: name
+                widget: string
+
+      - name: about
+        label: About page
+        file: content/about.json
+        format: json
+        fields:
+          - label: Heading
+            name: heading
+            widget: string
+          - label: About you
+            name: text
+            widget: text
+          - label: More about you (optional)
+            name: more
+            widget: markdown
+            required: false
+          - label: Picture
+            name: image
+            widget: image
+            required: false

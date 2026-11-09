@@ -1,0 +1,72 @@
+{
+  "title": "An Orionbound Spirit",
+  "shortName": "Orionbound",
+  "description": "Thoughts, photos and dream stories: a window between my inside and this world.",
+  "siteUrl": "",
+  "logo": "/images/logo.jpg",
+  "shareImage": "/images/logo.jpg",
+  "appIcon": "/icons/icon-512.png",
+  "look": {
+    "headingFont": "Jost",
+    "accent": "#F2C879",
+    "background": "navy"
+  },
+  "menu": [
+    { "label": "Thoughts", "kind": "tag", "tag": "Thought", "enabled": true },
+    { "label": "Photos", "kind": "tag", "tag": "Photo", "enabled": true },
+    { "label": "Moments", "kind": "tag", "tag": "Moment", "enabled": true },
+    { "label": "Dream Stories", "kind": "tag", "tag": "Dream Story", "enabled": true },
+    { "label": "About", "kind": "link", "url": "/about/", "enabled": true }
+  ],
+  "sections": [
+    { "type": "intro", "enabled": true },
+    { "type": "featured", "enabled": true },
+    { "type": "recent", "enabled": true },
+    { "type": "reader", "enabled": true },
+    { "type": "signup", "enabled": true }
+  ],
+  "intro": {
+    "eyebrow": "A personal journal",
+    "heading": "A window between my inside and this world.",
+    "text": "Thoughts on life and the universe, photos from my phone, and stories from my dreams. Read, look, and tell me what you feel.",
+    "primaryButton": "Read the latest",
+    "secondaryButton": "Get new posts by email",
+    "image": "/images/logo.jpg"
+  },
+  "featured": {
+    "readMore": "Read the full post"
+  },
+  "recent": {
+    "heading": "Recent entries",
+    "allPosts": "All posts"
+  },
+  "reader": {
+    "heading": "What did this make you feel?",
+    "button": "Share your thoughts"
+  },
+  "signup": {
+    "heading": "Follow the journey",
+    "text": "New thoughts, photos and dream stories, sent to your inbox. Free.",
+    "button": "Subscribe",
+    "formAction": "",
+    "emailField": "email"
+  },
+  "comments": {
+    "giscusRepo": "",
+    "giscusRepoId": "",
+    "giscusCategory": "Announcements",
+    "giscusCategoryId": "",
+    "formAction": "",
+    "note": "Be kind. I read every message.",
+    "button": "Share your thoughts"
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/an.orionbound.spirit/",
+    "youtube": "",
+    "facebook": "",
+    "handle": "@an.orionbound.spirit"
+  },
+  "footer": {
+    "name": "An Orionbound Spirit"
+  }
+}
