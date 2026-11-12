@@ -1,29 +1,74 @@
 {
   "title": "An Orionbound Spirit",
-  "shortName": "Orionbound",
+  "shortName": "Spirit of Orion",
   "description": "Thoughts, photos and dream stories: a window between my inside and this world.",
   "siteUrl": "",
-  "logo": "/images/logo.jpg",
-  "shareImage": "/images/logo.jpg",
-  "appIcon": "/icons/icon-512.png",
+  "logo": "/images/uploads/1001352643.webp",
+  "shareImage": "/images/uploads/1001352643.webp",
+  "appIcon": "/images/uploads/1001352643.webp",
   "look": {
     "headingFont": "Jost",
     "accent": "#F2C879",
     "background": "navy"
   },
   "menu": [
-    { "label": "Thoughts", "kind": "tag", "tag": "Thought", "enabled": true },
-    { "label": "Photos", "kind": "tag", "tag": "Photo", "enabled": true },
-    { "label": "Moments", "kind": "tag", "tag": "Moment", "enabled": true },
-    { "label": "Dream Stories", "kind": "tag", "tag": "Dream Story", "enabled": true },
-    { "label": "About", "kind": "link", "url": "/about/", "enabled": true }
+    {
+      "label": "Thoughts",
+      "kind": "tag",
+      "tag": "Thought",
+      "url": "",
+      "enabled": true
+    },
+    {
+      "label": "Photos",
+      "kind": "tag",
+      "tag": "Photo",
+      "url": "",
+      "enabled": true
+    },
+    {
+      "label": "Moments",
+      "kind": "tag",
+      "tag": "Moment",
+      "url": "",
+      "enabled": true
+    },
+    {
+      "label": "Dream Stories",
+      "kind": "tag",
+      "tag": "Dream Story",
+      "url": "",
+      "enabled": true
+    },
+    {
+      "label": "About",
+      "kind": "link",
+      "tag": "",
+      "url": "/about/",
+      "enabled": true
+    }
   ],
   "sections": [
-    { "type": "intro", "enabled": true },
-    { "type": "featured", "enabled": true },
-    { "type": "recent", "enabled": true },
-    { "type": "reader", "enabled": true },
-    { "type": "signup", "enabled": true }
+    {
+      "type": "intro",
+      "enabled": true
+    },
+    {
+      "type": "featured",
+      "enabled": true
+    },
+    {
+      "type": "recent",
+      "enabled": true
+    },
+    {
+      "type": "reader",
+      "enabled": true
+    },
+    {
+      "type": "signup",
+      "enabled": true
+    }
   ],
   "intro": {
     "eyebrow": "A personal journal",
@@ -52,11 +97,11 @@
     "emailField": "email"
   },
   "comments": {
+    "formAction": "",
     "giscusRepo": "",
     "giscusRepoId": "",
     "giscusCategory": "Announcements",
     "giscusCategoryId": "",
-    "formAction": "",
     "note": "Be kind. I read every message.",
     "button": "Share your thoughts"
   },
